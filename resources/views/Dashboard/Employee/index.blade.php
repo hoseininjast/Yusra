@@ -3,74 +3,8 @@
     <div class="main-content">
 
         <div class="page-content">
-            <div class="row">
-                <div class="col-12">
-                    <div class="page-title-box d-flex align-items-center justify-content-between">
-                        <h4 class="page-title mb-0 font-size-18">داشبورد</h4>
 
-                        <div class="page-title-right">
-                            <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item active">به داشبورد Yusra خوش آمدید</li>
-                            </ol>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
             <!-- start page title -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title mb-4">آخرین کار ها</h4>
-
-                            <div class="table-responsive">
-                                <table class="table table-centered">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">تاریخ</th>
-                                        <th scope="col">شناسه</th>
-                                        <th scope="col">نام</th>
-                                        <th scope="col">وضعیت</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach(\App\Models\Works::all() as $work)
-                                    <tr>
-                                        <td>{{\Hekmatinasser\Verta\Verta::instance($work->created_at)->format('d M Y')}}</td>
-                                        <td>
-                                            <a href="#" class="text-body font-weight-medium">#{{$work->id}}</a>
-                                        </td>
-                                        <td>{{$work->Name}}</td>
-                                        <td>
-                                            @if ($work->Status == 'Working')
-                                                در حال کار
-                                            @else
-                                                <span class="badge badge-success"></span>
-                                            @endif
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <div class="mt-3">
-                                <ul class="pagination pagination-rounded justify-content-center mb-0">
-                                    <li class="page-item">
-                                        <a class="page-link" href="#">قبلی</a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">بعدی</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-         {{--   <!-- start page title -->
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-flex align-items-center justify-content-between">
@@ -605,7 +539,7 @@
             </div>
             <!-- end row -->
         </div>
-        <!-- End Page-content -->--}}
+        <!-- End Page-content -->
 
     </div>
 @endsection

@@ -4,12 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
     public function index(){
-        return view('Dashboard.index');
+        if (\Auth::user()->Permission == 'Admin') {
+            return view('Dashboard.index');
+
+        }elseif (Auth::user()->Permission == 'Employee'){
+            return view('Dashboard.Employee.index');
+
+        }
     }
 
 
