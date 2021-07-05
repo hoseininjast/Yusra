@@ -35,7 +35,7 @@
 
         @include('layouts.header')
     <!-- ========== Left Sidebar Start ========== -->
-    @include('layouts.sidebar')
+        @include('layouts.sidebar')
 
 
 

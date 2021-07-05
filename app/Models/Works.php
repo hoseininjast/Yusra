@@ -10,6 +10,9 @@ class Works extends Model
     protected $fillable = [
         'Name',
         'Status',
+        'StartDate',
+        'EndDate',
+        'WorkDays',
     ];
     use HasFactory;
 
@@ -17,5 +20,8 @@ class Works extends Model
 
 
         return  \App\Models\Roles::count() .'/'. \App\Models\Parts::where([['WorkID' , $works->id],['Status' , 'Finished']])->count();
+    }
+    public  function Part(){
+        return $this->hasMany(Parts::class , 'WorkID' , 'id');
     }
 }

@@ -67,4 +67,10 @@ class User extends Authenticatable
     public function Roles(){
         return $this->belongsTo(Roles::class , 'Role' , 'id');
     }
+    public function FullName(){
+        return \Auth::user()->Firstname . ' ' . \Auth::user()->Lastname;
+    }
+    public function Notification(){
+        return $this->hasMany(Notification::class , 'UserID' , 'id');
+    }
 }

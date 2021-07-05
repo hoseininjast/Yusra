@@ -55,17 +55,7 @@
                                 </table>
                             </div>
 
-                            <div class="mt-3">
-                                <ul class="pagination pagination-rounded justify-content-center mb-0">
-                                    <li class="page-item">
-                                        <a class="page-link" href="#">قبلی</a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">بعدی</a></li>
-                                </ul>
-                            </div>
+
                         </div>
                     </div>
                 </div>

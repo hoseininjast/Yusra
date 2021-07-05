@@ -4,13 +4,13 @@
 
         <div class="user-wid text-center py-4">
             <div class="user-img">
-                <img src="assets/images/users/avatar-2.jpg" alt="" class="avatar-md mx-auto rounded-circle">
+                <img src="{{Auth::user()->profile_photo_path}}" alt="" class="avatar-md mx-auto rounded-circle">
             </div>
 
             <div class="mt-3">
 
-                <a href="#" class="text-dark font-weight-medium font-size-16 line-height-h">جان اسنو</a>
-                <p class="text-body mt-1 mb-0 font-size-13">طراح رابط کاربری</p>
+                <a href="#" class="text-dark font-weight-medium font-size-16 line-height-h">{{Auth::user()->FullName()}}</a>
+                <p class="text-body mt-1 mb-0 font-size-13">{{Auth::user()->Roles->Name}}</p>
 
             </div>
         </div>
@@ -33,23 +33,23 @@
 
 
                 <li>
-                    <a href="javascript:%20void(0);" class="has-arrow waves-effect">
+                    <a href="#" class="has-arrow waves-effect">
                         <i class="fas fa-money-bill-alt"></i>
                         <span>وظایف و کار ها</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
-                        <li>
-                            <ul class="sub-menu" aria-expanded="false">
                                 <li><a href="{{route('Dashboard.Work.All')}}">مدیریت</a></li>
-                                <li><a href="{{route('Dashboard.Work.Add')}}">افزودن</a></li>
-                            </ul>
-                        </li>
+                        @if (\Auth::user()->Permission == 'Admin' )
+                            <li><a href="{{route('Dashboard.Work.Add')}}">افزودن</a></li>
+
+                        @endif
+
                     </ul>
                 </li>
 
-
+                @if (\Auth::user()->Permission == 'Admin' )
                 <li>
-                    <a href="javascript:%20void(0);" class="has-arrow waves-effect">
+                    <a href="#" class="has-arrow waves-effect">
                         <i class="mdi mdi-account-circle"></i>
                         <span>کارمندان</span>
                     </a>
@@ -69,17 +69,14 @@
                         <li><a href="{{route('Dashboard.Role.Add')}}">افزودن</a></li>
                     </ul>
                 </li>
-
-                <!--<li>
-                    <a href="calendar.html" class=" waves-effect">
-                        <i class="mdi mdi-"></i>
-                        <span>تنظیمات سایت</span>
-                    </a>
-                </li>-->
+                @endif
 
 
 
-                <li class="menu-title">اجزاء</li>
+
+
+                <li class="menu-title">دسترسی سریع</li>
+                @if (\Auth::user()->Permission == 'Admin' )
 
                 <li>
                     <a href="#" class=" waves-effect">
@@ -87,6 +84,15 @@
                         <span>تنظیمات سایت</span>
                     </a>
                 </li>
+                @endif
+
+                <li>
+                    <a href="{{route('Dashboard.User.Setting')}}" class=" waves-effect">
+                        <i class="fa fa-gavel"></i>
+                        <span>تنظیمات حساب کاربری</span>
+                    </a>
+                </li>
+
                 <li>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf

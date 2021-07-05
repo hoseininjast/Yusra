@@ -15,7 +15,6 @@ class UserController extends Controller
 
         }elseif (Auth::user()->Permission == 'Employee'){
             return view('Dashboard.Employee.index');
-
         }
     }
 
@@ -31,7 +30,7 @@ class UserController extends Controller
         $request->validate([
             'FirstName' => 'required|string',
             'LastName' => 'required|string',
-            'PhoneNumber' => 'required|numeric|unique:users',
+            'PhoneNumber' => 'required|iran_mobile|unique:users',
             'email' => 'required|string|unique:users',
             'password' => 'required|string',
             'Role' => 'required|integer',

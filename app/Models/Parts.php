@@ -19,4 +19,11 @@ class Parts extends Model
         'FinishDate',
     ];
     use HasFactory;
+
+    public function User(){
+        return $this->belongsTo(User::class , 'UserID' , 'id');
+    }
+    public function Work(){
+        return $this->belongsTo(Works::class , 'WorkID' , 'id');
+    }
 }
