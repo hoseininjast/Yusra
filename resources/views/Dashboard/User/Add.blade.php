@@ -32,28 +32,28 @@
                                     <label for="taskname" class="col-form-label col-lg-2">نام کاربر</label>
                                     <div class="col-lg-10">
                                         <input  name="FirstName" type="text" class="form-control"
-                                               placeholder="نام کاربر را وارد کنید ...">
+                                               placeholder="نام کاربر را وارد کنید ..." value="{{old('FirstName')}}">
                                     </div>
                                 </div>
                                 <div class="form-group row mb-4">
                                     <label for="taskname" class="col-form-label col-lg-2">نام خانوادگی کاربر</label>
                                     <div class="col-lg-10">
                                         <input  name="LastName" type="text" class="form-control"
-                                               placeholder="نام خانوادگی کاربر را وارد کنید ...">
+                                               placeholder="نام خانوادگی کاربر را وارد کنید ..." value="{{old('LastName')}}">
                                     </div>
                                 </div>
                                 <div class="form-group row mb-4">
                                     <label for="taskname" class="col-form-label col-lg-2">شماره تلفن کاربر</label>
                                     <div class="col-lg-10">
                                         <input  name="PhoneNumber" type="text" class="form-control"
-                                               placeholder="شماره تلفن کاربر را وارد کنید ...">
+                                               placeholder="شماره تلفن کاربر را وارد کنید ..." value="{{old('PhoneNumber')}}">
                                     </div>
                                 </div>
                                 <div class="form-group row mb-4">
                                     <label for="taskname" class="col-form-label col-lg-2">ایمیل کاربر</label>
                                     <div class="col-lg-10">
                                         <input  name="email" type="text" class="form-control"
-                                               placeholder="ایمیل کاربر را وارد کنید ...">
+                                               placeholder="ایمیل کاربر را وارد کنید ..." value="{{old('email')}}">
                                     </div>
                                 </div>
                                 <div class="form-group row mb-4">
@@ -69,7 +69,11 @@
                                         <select class="form-control" name="Role">
                                             <option selected disabled>نقش کاربر را انتخاب کنید</option>
                                            @foreach(\App\Models\Roles::all() as $roles)
-                                            <option value="{{$roles->id}}">{{$roles->Name}}</option>
+                                            <option value="{{$roles->id}}" 
+                                            @if (old('Role') == $roles->id)
+                                                selected
+                                            @endif
+                                            >{{$roles->Name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -80,7 +84,11 @@
                                         <select class="form-control" name="Grade">
                                             <option selected disabled>مهارت کاربر را انتخاب کنید</option>
                                            @foreach(['A' , 'B' , 'C' , 'D'] as $Grade)
-                                            <option value="{{$Grade}}">{{$Grade}}</option>
+                                            <option value="{{$Grade}}"
+                                            @if (old('Grade') == $Grade)
+                                                selected
+                                            @endif
+                                            >{{$Grade}}</option>
                                             @endforeach
                                         </select>
                                     </div>

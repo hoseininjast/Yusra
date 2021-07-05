@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['as' => 'Dashboard.' , 'middleware' => ['auth' , 'web']] , function (){
+Route::group(['as' => 'Dashboard.' , 'middleware' => ['auth']] , function (){
     Route::get('/' , [\App\Http\Controllers\UserController::class , 'index'])->name('index');
-    Route::group(['middleware' => 'Admin'], function () {
+    Route::group([/*'middleware' => 'Admin'*/], function () {
         Route::group(['prefix' => 'Role' , 'as' => 'Role.'] , function () {
             Route::get('All' , [\App\Http\Controllers\RolesController::class , 'All'])->name('All');
             Route::get('Add' , [\App\Http\Controllers\RolesController::class , 'Add'])->name('Add');
@@ -35,10 +35,19 @@ Route::group(['as' => 'Dashboard.' , 'middleware' => ['auth' , 'web']] , functio
         Route::group(['prefix' => 'Work' , 'as' => 'Work.'] , function () {
             Route::get('All' , [\App\Http\Controllers\WorksController::class , 'All'])->name('All');
             Route::get('Add' , [\App\Http\Controllers\WorksController::class , 'Add'])->name('Add');
+            Route::get('View/{ID}' , [\App\Http\Controllers\WorksController::class , 'View'])->name('View');
             Route::post('Create' , [\App\Http\Controllers\WorksController::class , 'Create'])->name('Create');
             Route::get('Edit/{ID}' , [\App\Http\Controllers\WorksController::class , 'Edit'])->name('Edit');
             Route::put('Update/{ID}' , [\App\Http\Controllers\WorksController::class , 'Update'])->name('Update');
             Route::get('Delete/{ID}' , [\App\Http\Controllers\WorksController::class , 'Delete'])->name('Delete');
+            Route::get('Done/{ID}' , [\App\Http\Controllers\PartsController::class , 'Done'])->name('Done');
+            Route::get('Report/{ID}' , [\App\Http\Controllers\ReportController::class , 'Add'])->name('Report');
+            Route::post('SaveReport' , [\App\Http\Controllers\ReportController::class , 'Create'])->name('SaveReport');
+        });
+        Route::group(['prefix' => 'User' , 'as' => 'User.'] , function () {
+            Route::get('Setting' , [\App\Http\Controllers\AuthController::class , 'Setting'])->name('Setting');
+            Route::post('SettingUpdate' , [\App\Http\Controllers\AuthController::class , 'SettingUpdate'])->name('SettingUpdate');
+            Route::post('ImageUpdate' , [\App\Http\Controllers\AuthController::class , 'ImageUpdate'])->name('ImageUpdate');
         });
         /*Route::group(['prefix' => 'Part' , 'as' => 'Part.'] , function () {
             Route::get('All' , [\App\Http\Controllers\PartsController::class , 'All'])->name('All');
@@ -49,7 +58,7 @@ Route::group(['as' => 'Dashboard.' , 'middleware' => ['auth' , 'web']] , functio
             Route::get('Delete/{ID}' , [\App\Http\Controllers\PartsController::class , 'Delete'])->name('Delete');
         });*/
     });
-   Route::group(['middleware' => 'Employee'], function () {
+   /*Route::group(['middleware' => 'Employee'], function () {
         Route::group(['prefix' => 'Role' , 'as' => 'Role.'] , function () {
             Route::get('All' , [\App\Http\Controllers\RolesController::class , 'All'])->name('All');
             Route::get('Add' , [\App\Http\Controllers\RolesController::class , 'Add'])->name('Add');
@@ -74,6 +83,6 @@ Route::group(['as' => 'Dashboard.' , 'middleware' => ['auth' , 'web']] , functio
             Route::put('Update/{ID}' , [\App\Http\Controllers\WorksController::class , 'Update'])->name('Update');
             Route::get('Delete/{ID}' , [\App\Http\Controllers\WorksController::class , 'Delete'])->name('Delete');
         });
-    });
+    });*/
 
 });
